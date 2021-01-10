@@ -89,7 +89,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	obStyl += 'width:' + wielkoscObrazka + 'px;height:auto;padding:0;border:0;border-radius:' + obrazekRadius + '%;';
 
 	let styl = document.createElement('style');
-	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.03, 1.03)} .xRandomPost:active{transform:scale(0.97, 0.97)}';
+	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.01, 1.01)} .xRandomPost:active{transform:scale(0.99, 0.99)}';
 	document.head.appendChild(styl);
 
 	function los(h, j) {
