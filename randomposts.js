@@ -2,7 +2,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 
 (function(nr) {
 	let tablica = [];
-	let skrypt = document.querySelectorAll('script[src="https://cdn.jsdelivr.net/gh/bloggerwidgets/scripts@main/randomposts.js"]')[nr];
+	let skrypt = document.querySelectorAll('script[src="https://cdn.jsdelivr.net/gh/bloggerwidgets/scripts@latest/randomposts.js"]')[nr];
 	let glowny = document.createElement('div');
 	skrypt.parentNode.insertBefore(glowny, skrypt);
 	
