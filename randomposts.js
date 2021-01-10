@@ -137,13 +137,14 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.fontFamily = czcionkaTekst;
 		elem.style.textDecoration = 'none';
 		elem.style.rounding = zaokraglenie + 'px';
+		elem.style.marginBottom = '5px';
 		elem.href = p.link;
 		elem.title = p.tytul;
 		
 		let html = '';
 		
 		if (obrazek !== 'none') html += p.obrzk;
-		if (tytul !== 'none') html += '<div style="text-align:' + tytul + ';font-size:' + wielkoscTytulu + 'px;font-weight:bold;color:' + kolorTytulu + ';font-family:' + czcionkaTytul + ';margin-bottom:' + margines + 'px;">';
+		if (tytul !== 'none') html += '<div style="text-align:' + tytul + ';font-size:' + wielkoscTytulu + 'px;font-weight:bold;color:' + kolorTytulu + ';font-family:' + czcionkaTytul + ';margin-bottom:' + margines + 'px;">' + p.tytul + '</div>';
 		if (informacje !== 'none' && (showAuthor || dataPubl || iloscKom)) {
 			html += '<div style="text-align:' + informacje + 'margin-bottom:' + margines + 'px;">';
 			
