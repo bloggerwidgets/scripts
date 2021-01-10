@@ -160,7 +160,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		if (etykiety !== 'none') {
 			html += '<div style="text-align:' + etykiety + ';margin-bottom:' + margines + 'px;">';
 			p.tagi.forEach((tag, i) => {
-				html += '<span style="display:inline-flex;align-items:center;background:' + kolorTekstu + ';color:' + kolorTla + ';padding:1px 3px;margin:5px ' + (i < p.tagi.length - 1 ? '5px' : '0') + ' 5px ' + (i > 0 ? '5px' : '0') + ';"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:' + (wielkoscTekstu - 3) + 'px;margin-right:' + (wielkoscTekstu / 3) + 'px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + tag + '</span>';
+				html += '<span style="display:inline-flex;align-items:center;background:' + kolorTekstu + ';color:' + kolorTla + ';padding:1px 3px;margin:2px ' + (i < p.tagi.length - 1 ? '4px' : '0') + ' 2px ' + (i > 0 ? '4px' : '0') + ';"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:' + (wielkoscTekstu - 2) + 'px;margin-right:3px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + tag + '</span>';
 			});
 			html += '</div>';
 		}
