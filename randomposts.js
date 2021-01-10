@@ -136,7 +136,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.lineHeight = '1.2';
 		elem.style.fontFamily = czcionkaTekst;
 		elem.style.textDecoration = 'none';
-		elem.style.rounding = zaokraglenie + 'px';
+		elem.style.borderRadius = zaokraglenie + 'px';
 		elem.style.marginBottom = '5px';
 		elem.href = p.link;
 		elem.title = p.tytul;
@@ -146,7 +146,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		if (obrazek !== 'none') html += p.obrzk;
 		if (tytul !== 'none') html += '<div style="text-align:' + tytul + ';font-size:' + wielkoscTytulu + 'px;font-weight:bold;color:' + kolorTytulu + ';font-family:' + czcionkaTytul + ';margin-bottom:' + margines + 'px;">' + p.tytul + '</div>';
 		if (informacje !== 'none' && (showAuthor || dataPubl || iloscKom)) {
-			html += '<div style="text-align:' + informacje + 'margin-bottom:' + margines + 'px;">';
+			html += '<div style="text-align:' + informacje + ';margin-bottom:' + margines + 'px;">';
 			
 			if (iloscKom) html += '<span style="display:inline-flex;align-items:center;' + (showAuthor || dataPubl ? 'margin-right:' + wielkoscTekstu + 'px;' : '') + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="height:' + (wielkoscTekstu - 3) + 'px;margin-right:' + (wielkoscTekstu / 3) + 'px;"><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>' + p.koment;
 		
@@ -159,8 +159,8 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		
 		if (etykiety !== 'none') {
 			html += '<div style="text-align:' + etykiety + ';margin-bottom:' + margines + 'px;">';
-			p.tagi.forEach(tag => {
-				html += '<span style="display:inline-flex;align-items:center;background:' + kolorTekstu + ';color:' + kolorTla + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:' + (wielkoscTekstu - 3) + 'px;margin-right:' + (wielkoscTekstu / 3) + 'px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + tag + '</span>';
+			p.tagi.forEach((tag, i) => {
+				html += '<span style="display:inline-flex;align-items:center;background:' + kolorTekstu + ';color:' + kolorTla + ';padding:1px 3px;margin:5px ' + (i < p.tagi.length - 1 ? '5px' : '0') + ' 5px ' + (i > 0 ? '5px' : '0') + ';"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:' + (wielkoscTekstu - 3) + 'px;margin-right:' + (wielkoscTekstu / 3) + 'px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + tag + '</span>';
 			});
 			html += '</div>';
 		}
