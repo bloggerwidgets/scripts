@@ -23,7 +23,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	if (wielkoscTekstu < 8 || isNaN(wielkoscTekstu)) wielkoscTekstu = 14;
 	let wielkoscTytulu = Number(skrypt.getAttribute('titleSize'));
 	if (wielkoscTytulu < 8 || isNaN(wielkoscTytulu)) wielkoscTytulu = wielkoscTekstu + 2;
-	let margines = 4;
+	let margines = Math.round(wielkoscTekstu / 5);
 	
 	let borderWidth = skrypt.getAttribute('borderWidth') ? Number(skrypt.getAttribute('borderWidth')) : 1;
 	if (borderWidth < 0 || isNaN(borderWidth)) borderWidth = 1;
