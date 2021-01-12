@@ -16,6 +16,8 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		kategoria = '/-/' + kategoria;
 	}
 	
+	let wyswietl = skrypt.getAttribute('display') === 'horizontal' ? 'horizontal' : 'vertical';
+	
 	let zaokraglenie = skrypt.getAttribute('rounding') ? Number(skrypt.getAttribute('rounding')) : 6;
 	if (zaokraglenie < 0 || isNaN(zaokraglenie)) zaokraglenie = 6;
 	
@@ -89,7 +91,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	obStyl += 'width:' + wielkoscObrazka + 'px;height:auto;padding:0;border:0;border-radius:' + obrazekRadius + '%;';
 
 	let styl = document.createElement('style');
-	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.01, 1.01);opacity:0.8;} .xRandomPost:active{transform:scale(0.99, 0.99)}';
+	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.01, 1.01);opacity:0.9;} .xRandomPost:active{transform:scale(0.99, 0.99)}';
 	document.head.appendChild(styl);
 
 	function los(h, j) {
@@ -127,7 +129,6 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		});
 		
 		let elem = glowny.querySelector('a.xRandomPost[post="np27' + j + '0s1"]');
-		elem.style.display = 'block';
 		elem.style.border = borderWidth + 'px ' + borderStyle + ' ' + borderColor;
 		elem.style.fontSize = wielkoscTekstu + 'px';
 		elem.style.color = kolorTekstu;
@@ -138,6 +139,13 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.textDecoration = 'none';
 		elem.style.borderRadius = zaokraglenie + 'px';
 		elem.style.marginBottom = '5px';
+		if (display === 'horizontal') {
+			elem.style.display = 'inline-block';
+			elem.style.marginRight = '5px';
+		} else {
+			elem.style.display = 'block';
+			elem.style.marginBottom = '5px';
+		}
 		elem.href = p.link;
 		elem.title = p.tytul;
 		
