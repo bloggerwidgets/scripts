@@ -140,11 +140,11 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.fontFamily = czcionkaTekst;
 		elem.style.textDecoration = 'none';
 		elem.style.borderRadius = zaokraglenie + 'px';
-		elem.style.marginBottom = '5px';
 		if (wyswietl === 'horizontal') {
 			elem.style.display = 'inline-block';
 			elem.style.marginRight = '5px';
 			elem.style.width = szerokosc + 'px';
+			elem.style.verticalAlign = 'top';
 		} else {
 			elem.style.display = 'block';
 			elem.style.marginBottom = '5px';
