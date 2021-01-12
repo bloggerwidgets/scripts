@@ -17,6 +17,8 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	}
 	
 	let wyswietl = skrypt.getAttribute('display') === 'horizontal' ? 'horizontal' : 'vertical';
+	let szerokosc = Number(skrypt.getAttribute('width'));
+	if (szerokosc < 50 || isNaN(szerokosc)) szerokosc = 140;
 	
 	let zaokraglenie = skrypt.getAttribute('rounding') ? Number(skrypt.getAttribute('rounding')) : 6;
 	if (zaokraglenie < 0 || isNaN(zaokraglenie)) zaokraglenie = 6;
@@ -142,6 +144,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		if (wyswietl === 'horizontal') {
 			elem.style.display = 'inline-block';
 			elem.style.marginRight = '5px';
+			elem.style.width = szerokosc + 'px';
 		} else {
 			elem.style.display = 'block';
 			elem.style.marginBottom = '5px';
