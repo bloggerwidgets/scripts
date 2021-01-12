@@ -139,7 +139,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.textDecoration = 'none';
 		elem.style.borderRadius = zaokraglenie + 'px';
 		elem.style.marginBottom = '5px';
-		if (display === 'horizontal') {
+		if (wyswietl === 'horizontal') {
 			elem.style.display = 'inline-block';
 			elem.style.marginRight = '5px';
 		} else {
