@@ -14,6 +14,8 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	loader.style.width = '25px';
 	loader.style.height = '25px';
 	
+	skrypt.parentNode.insertBefore(loader, skrypt);
+	
 	let ilePostow = Number(skrypt.getAttribute('numberOfPosts'));
 	if (ilePostow < 1 || isNaN(ilePostow)) ilePostow = 5;
 	
@@ -117,7 +119,6 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 				glowny.appendChild(blok);
 			}
 		}
-		glowny.appendChild(loader);
 	}
 
 	function lapWpisy(h, j) {
