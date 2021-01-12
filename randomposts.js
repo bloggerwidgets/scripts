@@ -6,6 +6,14 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	let glowny = document.createElement('div');
 	skrypt.parentNode.insertBefore(glowny, skrypt);
 	
+	let loader = document.createElement('div');
+	loader.setAttribute('class', 'RandomPostsLoad');
+	loader.style.border = '6px solid #f3f3f3';
+	loader.style.borderRadius = '50%';
+	loader.style.borderTop = '6px solid #3498db';
+	loader.style.width = '25px';
+	loader.style.height = '25px';
+	
 	let ilePostow = Number(skrypt.getAttribute('numberOfPosts'));
 	if (ilePostow < 1 || isNaN(ilePostow)) ilePostow = 5;
 	
@@ -17,6 +25,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	}
 	
 	let wyswietl = skrypt.getAttribute('display') === 'horizontal' ? 'horizontal' : 'vertical';
+	
 	let szerokosc = Number(skrypt.getAttribute('width'));
 	if (szerokosc < 50 || isNaN(szerokosc)) szerokosc = 140;
 	
@@ -93,7 +102,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 	obStyl += 'width:' + wielkoscObrazka + 'px;height:auto;padding:0;border:0;border-radius:' + obrazekRadius + '%;';
 
 	let styl = document.createElement('style');
-	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.01, 1.01);opacity:0.9;} .xRandomPost:active{transform:scale(0.99, 0.99)}';
+	styl.innerHTML = '.xRandomPost:after{content:"";display:block;clear:both;} .xRandomPost:hover{transform:scale(1.01, 1.01);opacity:0.9;} .xRandomPost:active{transform:scale(0.99, 0.99)} .RandomPostsLoad {animation:dawaj 1s linear infinite;} @keyframes dawaj {0% {transform: rotate(0deg);} 100% {transform:rotate(360deg);}}';
 	document.head.appendChild(styl);
 
 	function los(h, j) {
@@ -104,9 +113,11 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 				let blok = document.createElement('a');
 				blok.setAttribute('post', 'np27' + numer + '0s1');
 				blok.setAttribute('class', 'xRandomPost');
+				blok.setAttribute('status', 'loading');
 				glowny.appendChild(blok);
 			}
 		}
+		glowny.appendChild(loader);
 	}
 
 	function lapWpisy(h, j) {
@@ -140,6 +151,7 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		elem.style.fontFamily = czcionkaTekst;
 		elem.style.textDecoration = 'none';
 		elem.style.borderRadius = zaokraglenie + 'px';
+		elem.style.marginBottom = '5px';
 		if (wyswietl === 'horizontal') {
 			elem.style.display = 'inline-block';
 			elem.style.marginRight = '5px';
@@ -147,7 +159,6 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 			elem.style.verticalAlign = 'top';
 		} else {
 			elem.style.display = 'block';
-			elem.style.marginBottom = '5px';
 		}
 		elem.href = p.link;
 		elem.title = p.tytul;
@@ -179,6 +190,8 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		if (dlugoscWypisu > 0) html += '<div style="text-align:' + wypisAlign + '">' + p.wypis + '</div>';
 		
 		elem.innerHTML = html;
+		elem.removeAttribute('status');
+		if (glowny.querySelectorAll('a.xRandomPost[status="loading"]').length === 0) gotowosc();
 	}
 
 	function pojed(h) {
@@ -211,5 +224,16 @@ RandomPostsGenerator = typeof RandomPostsGenerator == 'undefined' ? 0 : RandomPo
 		}
 	}
 	pytak.send();
+	
+	function gotowosc() {
+		if (wyswietl === 'horizontal') {
+			let maks = 0;
+			glowny.querySelectorAll('a.xRandomPost').forEach(w => {
+				if (w.offsetHeight > maks) maks = w.offsetHeight;
+			})
+			glowny.querySelectorAll('a.xRandomPost').forEach(w => w.style.height = maks + 'px');
+		}
+		loader.remove();
+	}
 
 })(RandomPostsGenerator);
